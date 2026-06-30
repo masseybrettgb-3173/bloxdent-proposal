@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bloxdent Smiles | NHS Dental Practice – Chipping Norton</title>
+<meta name="description" content="NHS dental practice in Chipping Norton accepting new patients. Book online, emergency slots available Mon–Sat."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ──────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1A6FA8; --blue-dk:#0D4F7C; --blue-lt:#EBF5FF;
+  --mint:#2EB8A0; --mint-lt:#E6F8F5;
+  --white:#fff; --off:#F7FBFF; --grey:#667085;
+  --dark:#0C1B2E; --border:#D6E8F5;
+  --sh:0 4px 24px rgba(26,111,168,.12);
+  --r:12px; --font:'Inter',sans-serif; --serif:'Playfair Display',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--dark);background:var(--white);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}ul{list-style:none}
+button{cursor:pointer;font-family:var(--font)}
+img{display:block;max-width:100%;height:auto}
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.sec{padding:80px 0}.sec--alt{background:var(--off)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.badge{display:inline-block;padding:5px 14px;background:var(--mint-lt);color:var(--mint);font-size:.73rem;font-weight:700;border-radius:99px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px}
+.sec-title{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);line-height:1.2;margin-bottom:14px}
+.sec-sub{color:var(--grey);font-size:.98rem;max-width:520px}
+.center{text-align:center}.center .sec-sub{margin:0 auto}
+
+/* ── BUTTONS — all solid blue ────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-weight:600;font-size:.92rem;border:none;transition:all .2s;white-space:nowrap}
+.btn-p{background:var(--blue);color:#fff}.btn-p:hover{background:var(--blue-dk);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,111,168,.32)}
+.btn-o{background:transparent;color:var(--blue);border:2px solid var(--blue)}.btn-o:hover{background:var(--blue);color:#fff}
+.btn-w{background:#fff;color:var(--blue-dk)}.btn-w:hover{background:var(--blue-lt)}
+.btn-sm{padding:9px 18px;font-size:.84rem}
+
+/* ── PROGRESS ───────────────────────────────────────────── */
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--blue);z-index:9999;width:0;transition:width .1s}
+
+/* ── TOPBAR ─────────────────────────────────────────────── */
+.topbar{background:var(--blue-dk);color:rgba(255,255,255,.8);font-size:.79rem;padding:7px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.tb-items{display:flex;gap:18px;align-items:center}
+.tb-item{display:flex;align-items:center;gap:6px}
+.topbar a{color:rgba(255,255,255,.85)}.topbar a:hover{color:#fff}
+.tb-phone{background:rgba(255,255,255,.12);border-radius:6px;padding:3px 10px;font-weight:700;color:#fff!important}
+
+/* ── NAV ────────────────────────────────────────────────── */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.logo-icon{width:40px;height:40px;background:var(--blue);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:22px;height:22px;fill:#fff}
+.logo-text{font-family:var(--serif);font-size:1.1rem;color:var(--blue-dk);line-height:1.1}
+.logo-text small{display:block;font-family:var(--font);font-size:.62rem;font-weight:600;color:var(--grey);letter-spacing:.05em}
+/* NHS trust badge in nav */
+.nhs-nav-badge{display:flex;align-items:center;gap:6px;background:#EBF3FF;border:1px solid #B8D4F0;border-radius:6px;padding:4px 10px;font-size:.74rem;font-weight:700;color:#005EB8;white-space:nowrap;flex-shrink:0}
+.nhs-nav-badge svg{width:14px;height:14px;fill:#005EB8}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{padding:7px 12px;border-radius:6px;font-size:.87rem;font-weight:500;color:var(--dark);transition:all .18s}
+.nav-links a:hover{background:var(--blue-lt);color:var(--blue)}
+.nav-phone{font-size:.84rem;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:5px}
+.nav-phone:hover{color:var(--blue-dk)}
+.hbg{display:none;background:none;border:none;padding:6px}
+.hbg span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;border-radius:2px;transition:all .3s}
+.mob-menu{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;gap:4px}
+.mob-menu.open{display:flex}
+.mob-menu a{padding:11px 14px;border-radius:8px;font-weight:500;color:var(--dark)}
+.mob-menu a:hover{background:var(--blue-lt);color:var(--blue)}
+.mob-menu .btn{margin-top:6px;justify-content:center}
+.mob-phone{display:flex;align-items:center;gap:8px;padding:11px 14px;font-weight:700;color:var(--blue);font-size:.95rem}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero{min-height:84vh;display:flex;align-items:center;background:linear-gradient(135deg,#EBF5FF 0%,#F0FAF8 55%,#EBF5FF 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-140px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(46,184,160,.13) 0%,transparent 70%);border-radius:50%}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:44px;padding-bottom:44px}
+.hero-eye{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.pill{font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:4px;letter-spacing:.05em}
+.pill-nhs{background:#005EB8;color:#fff}
+.pill-open{background:var(--blue);color:#fff}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3.1rem);line-height:1.14;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero-desc{font-size:1.02rem;color:var(--grey);margin-bottom:28px;max-width:460px}
+.hero-btns{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:36px}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.hs{border-left:3px solid var(--border);padding-left:18px}
+.hs:first-child{border:none;padding-left:0}
+.hs strong{display:block;font-size:1.3rem;font-weight:800;color:var(--blue)}
+.hs span{font-size:.78rem;color:var(--grey)}
+
+/* Hero image */
+.hero-img-wrap{position:relative}
+.hero-photo{border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 56px rgba(0,0,0,.16);background:var(--blue-lt)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.float-card{position:absolute;background:#fff;border-radius:13px;padding:13px 17px;box-shadow:var(--sh);border:1px solid var(--border);display:flex;align-items:center;gap:11px}
+.float-card .fi{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.float-card strong{display:block;font-size:.85rem;color:var(--dark)}
+.float-card span{font-size:.74rem;color:var(--grey)}
+.fc1{bottom:-16px;left:-22px}
+.fc2{top:-14px;right:-14px;background:var(--blue);border-color:var(--blue)}
+.fc2 strong,.fc2 span{color:#fff}.fc2 span{opacity:.8}
+.pulse{width:10px;height:10px;border-radius:50%;background:#4ade80;position:relative;flex-shrink:0}
+.pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid #4ade80;animation:p 1.6s infinite}
+@keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0;transform:scale(1.8)}}
+
+/* ── SERVICES ───────────────────────────────────────────── */
+.svc-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:28px 22px;transition:all .22s}
+.svc-card:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:var(--blue)}
+.svc-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.35rem}
+.svc-card h3{font-size:.97rem;font-weight:700;margin-bottom:7px}
+.svc-card p{font-size:.83rem;color:var(--grey);line-height:1.65}
+.svc-link{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:.81rem;font-weight:700;color:var(--blue);transition:gap .15s}
+.svc-link:hover{gap:9px}
+
+/* ── SOCIAL PROOF STRIP ─────────────────────────────────── */
+.proof-strip{background:linear-gradient(135deg,var(--blue-dk) 0%,#0a3d6b 100%);padding:44px 0}
+.proof-inner{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.proof-score{text-align:center;flex-shrink:0}
+.proof-score .big{font-family:var(--serif);font-size:3.6rem;font-weight:700;color:#fff;line-height:1}
+.proof-score .stars{color:#F59E0B;font-size:1.1rem;margin:4px 0}
+.proof-score small{font-size:.76rem;color:rgba(255,255,255,.6)}
+.proof-divider{width:1px;background:rgba(255,255,255,.15);height:100%;min-height:80px;margin:0 4px}
+.proof-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pq{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:18px 16px}
+.pq p{font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.65;font-style:italic;margin-bottom:12px}
+.pq-meta{display:flex;align-items:center;gap:9px}
+.pq-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0}
+.pq-meta strong{display:block;font-size:.78rem;color:#fff}
+.pq-meta span{font-size:.72rem;color:rgba(255,255,255,.55)}
+
+/* ── BOOKING ────────────────────────────────────────────── */
+.booking-sec{background:var(--off);padding:80px 0}
+.bk-wrap{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.1);display:grid;grid-template-columns:1fr 1.35fr;border:1px solid var(--border)}
+.bk-panel{background:var(--blue);padding:44px 36px;color:#fff}
+.bk-panel h2{font-family:var(--serif);font-size:1.75rem;line-height:1.2;margin-bottom:12px}
+.bk-panel>p{font-size:.9rem;opacity:.8;margin-bottom:26px}
+.bk-items{display:flex;flex-direction:column;gap:16px}
+.bk-item{display:flex;align-items:flex-start;gap:12px}
+.bk-ico{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
+.bk-item strong{display:block;font-size:.85rem;margin-bottom:1px}
+.bk-item span{font-size:.78rem;opacity:.72}
+.bk-form{padding:44px 36px}
+.bk-form h3{font-size:1.15rem;font-weight:700;margin-bottom:5px}
+.bk-form>.sub{font-size:.83rem;color:var(--grey);margin-bottom:22px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:.78rem;font-weight:700;margin-bottom:5px;color:var(--dark)}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:.87rem;font-family:var(--font);color:var(--dark);outline:none;transition:border-color .2s;background:#fff}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,111,168,.09)}
+.fg textarea{resize:vertical;min-height:72px}
+.fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23667085' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fcheck{display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;font-size:.81rem;color:var(--grey)}
+.fcheck input{margin-top:2px;accent-color:var(--blue);width:15px;height:15px;flex-shrink:0}
+
+/* Slot grid */
+.slot-label{font-size:.78rem;font-weight:700;margin-bottom:6px;color:var(--dark)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
+.slot{padding:7px 2px;border:1.5px solid var(--border);border-radius:7px;text-align:center;font-size:.77rem;font-weight:600;cursor:pointer;transition:all .15s;background:#fff;color:var(--dark)}
+.slot:hover{border-color:var(--blue);color:var(--blue)}
+.slot.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.slot.na{background:var(--off);color:var(--border);cursor:not-allowed;text-decoration:line-through}
+
+/* Reminder row */
+.rem-row{background:var(--blue-lt);border-radius:9px;padding:13px 15px;margin-bottom:14px;display:flex;align-items:flex-start;gap:11px}
+.rem-row .ri{font-size:1rem;flex-shrink:0;margin-top:2px}
+.rem-row p{font-size:.79rem;color:var(--blue-dk);font-weight:600;margin-bottom:7px}
+.rem-checks{display:flex;gap:16px;flex-wrap:wrap}
+.rem-checks label{display:flex;align-items:center;gap:6px;font-size:.79rem;color:var(--dark);cursor:pointer}
+.rem-checks input{accent-color:var(--blue);width:14px;height:14px}
+
+/* Mobile wizard */
+.wizard-steps{display:none;margin-bottom:18px}
+.wiz-dots{display:flex;gap:6px;align-items:center;margin-bottom:16px}
+.wiz-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s}
+.wiz-dot.active{background:var(--blue);width:22px;border-radius:4px}
+.wiz-dot.done{background:var(--mint)}
+.wiz-label{font-size:.78rem;font-weight:600;color:var(--blue)}
+.wiz-panel{display:none}.wiz-panel.active{display:block}
+.wiz-nav{display:flex;gap:10px;margin-top:14px}
+
+/* Success */
+.bk-success{display:none;text-align:center;padding:32px 16px}
+.bk-success .si{width:64px;height:64px;background:var(--mint-lt);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem}
+.bk-success h4{font-size:1.15rem;font-weight:700;margin-bottom:7px}
+.bk-success p{color:var(--grey);font-size:.86rem;line-height:1.7}
+.rem-confirm{background:var(--off);border-radius:9px;padding:11px 15px;margin:14px 0;font-size:.8rem;color:var(--grey);border-left:3px solid var(--mint)}
+.rem-confirm strong{display:block;color:var(--dark);margin-bottom:3px}
+
+/* ── TEAM ───────────────────────────────────────────────── */
+.team-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);text-align:center;transition:all .22s;background:#fff}
+.team-card:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.team-photo{height:180px;position:relative;overflow:hidden}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+.team-photo-ph{height:180px;background:linear-gradient(135deg,var(--blue-lt) 0%,var(--mint-lt) 100%);display:flex;align-items:center;justify-content:center;font-size:3.2rem}
+.team-info{padding:18px 16px}
+.team-info h4{font-weight:700;font-size:.93rem;margin-bottom:2px}
+.team-role{font-size:.78rem;color:var(--mint);font-weight:700;margin-bottom:7px}
+.team-info p{font-size:.8rem;color:var(--grey)}
+
+/* ── LOCATION ───────────────────────────────────────────── */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.loc-map{border-radius:var(--r);overflow:hidden;height:330px;border:1px solid var(--border)}
+.loc-map iframe{width:100%;height:100%;border:none}
+.ic{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:16px}
+.ir{display:flex;gap:11px;margin-bottom:12px;align-items:flex-start}
+.ir:last-child{margin-bottom:0}
+.ii{width:34px;height:34px;border-radius:8px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
+.ir strong{display:block;font-size:.83rem;color:var(--dark);margin-bottom:1px}
+.ir span{font-size:.8rem;color:var(--grey)}
+.htbl{width:100%;border-collapse:collapse}
+.htbl tr{border-bottom:1px solid var(--border)}
+.htbl tr:last-child{border:none}
+.htbl td{padding:7px 0;font-size:.82rem}
+.htbl td:last-child{text-align:right;color:var(--grey)}
+.op{color:var(--mint)!important;font-weight:600}
+.today-row td{color:var(--blue);font-weight:600}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+.footer{background:var(--dark);color:rgba(255,255,255,.62);font-size:.84rem}
+.footer-main{padding:52px 0 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px}
+.footer-brand p{margin:13px 0 16px;font-size:.81rem;line-height:1.7}
+.fsoc{display:flex;gap:8px}
+.fsoc a{width:32px;height:32px;border-radius:7px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.fsoc a:hover{background:var(--blue)}
+.footer h5{font-size:.86rem;font-weight:700;color:#fff;margin-bottom:14px}
+.footer ul li{margin-bottom:8px}
+.footer ul a{color:rgba(255,255,255,.58);transition:color .2s}.footer ul a:hover{color:#fff}
+.fc-d{display:flex;gap:8px;align-items:flex-start;margin-bottom:11px}
+.footer-bot{border-top:1px solid rgba(255,255,255,.08);padding:16px 0}
+.footer-bot .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:.77rem}
+.footer-bot a{color:rgba(255,255,255,.48)}.footer-bot a:hover{color:#fff}
+.cqc{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:6px 12px;font-size:.76rem;color:rgba(255,255,255,.7);margin-top:8px}
+
+/* ── SCROLL TOP ─────────────────────────────────────────── */
+#goTop{position:fixed;bottom:86px;right:24px;width:42px;height:42px;background:var(--blue);color:#fff;border:none;border-radius:50%;box-shadow:0 4px 14px rgba(26,111,168,.35);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:all .25s;z-index:200}
+#goTop.show{opacity:1;pointer-events:all}
+#goTop:hover{background:var(--blue-dk);transform:translateY(-2px)}
+
+/* ── REVEAL ─────────────────────────────────────────────── */
+.rev{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.rev.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ══════════════════════════════════════════════════════════
+   NOVA CHATBOT
+   ══════════════════════════════════════════════════════════ */
+#nova-launcher{position:fixed;bottom:24px;right:24px;z-index:300;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#nova-greeting{background:var(--dark);color:#fff;font-size:.8rem;font-weight:500;padding:9px 14px;border-radius:12px 12px 3px 12px;max-width:200px;line-height:1.45;opacity:0;transform:translateY(6px) scale(.95);transition:all .3s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+#nova-greeting::after{content:'';position:absolute;bottom:-6px;right:16px;width:10px;height:10px;background:var(--dark);clip-path:polygon(0 0,100% 0,100% 100%)}
+#nova-greeting.show{opacity:1;transform:none;pointer-events:all}
+#nova-btn{width:56px;height:56px;border-radius:50%;background:var(--blue);border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(26,111,168,.42);transition:transform .2s,box-shadow .2s;cursor:pointer;position:relative}
+#nova-btn:hover{transform:scale(1.07);box-shadow:0 8px 28px rgba(26,111,168,.5)}
+#nova-btn svg{width:25px;height:25px;fill:#fff}
+#nova-notif{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:#EF4444;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:#fff;opacity:0;transition:opacity .3s}
+#nova-notif.show{opacity:1}
+
+/* Chat window */
+#nova-win{position:fixed;bottom:94px;right:24px;width:364px;height:530px;background:#fff;border-radius:18px;box-shadow:0 20px 56px rgba(0,0,0,.18);z-index:299;display:flex;flex-direction:column;overflow:hidden;transform:scale(.88) translateY(24px);opacity:0;pointer-events:none;transition:all .28s cubic-bezier(.4,0,.2,1);transform-origin:bottom right}
+#nova-win.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+
+/* Header */
+.nh{background:var(--blue);padding:16px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nh-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.nh-info strong{display:block;color:#fff;font-size:.92rem}
+.nh-info span{font-size:.72rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:5px}
+.nh-dot{width:7px;height:7px;border-radius:50%;background:#4ade80}
+.nh-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);padding:4px;cursor:pointer;line-height:0}
+.nh-close:hover{color:#fff}
+.nh-close svg{width:17px;height:17px}
+
+/* Messages */
+.nm{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.nm::-webkit-scrollbar{width:3px}
+.nm::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.msg{display:flex;gap:7px;align-items:flex-end;max-width:88%}
+.msg.bot{align-self:flex-start}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.msg-av{width:26px;height:26px;border-radius:50%;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
+.mb{padding:9px 13px;border-radius:14px;font-size:.83rem;line-height:1.56}
+.msg.bot .mb{background:var(--off);color:var(--dark);border-bottom-left-radius:4px}
+.msg.user .mb{background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.mt{font-size:.67rem;color:var(--grey);margin-top:3px}
+.msg.user .mt{text-align:right}
+
+/* Quick replies */
+.qr-wrap{display:flex;flex-wrap:wrap;gap:6px;padding:3px 0 2px}
+.qr{background:#fff;border:1.5px solid var(--border);border-radius:99px;padding:5px 12px;font-size:.77rem;font-weight:600;color:var(--blue);cursor:pointer;transition:all .15s}
+.qr:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* Typing */
+.typing-wrap{display:flex;gap:7px;align-items:flex-end}
+.typing{display:flex;gap:4px;padding:10px 14px;background:var(--off);border-radius:14px;border-bottom-left-radius:4px;width:52px}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--grey);animation:b 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+/* Input */
+.ni{padding:11px 13px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;flex-shrink:0}
+.ni textarea{flex:1;border:1.5px solid var(--border);border-radius:10px;padding:8px 11px;font-size:.84rem;font-family:var(--font);resize:none;outline:none;max-height:90px;overflow-y:auto;transition:border-color .2s;line-height:1.45}
+.ni textarea:focus{border-color:var(--blue)}
+.ni-send{width:36px;height:36px;border-radius:8px;background:var(--blue);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}
+.ni-send:hover{background:var(--blue-dk)}
+.ni-send svg{width:15px;height:15px;fill:#fff}
+.ni-send:disabled{background:var(--border);cursor:not-allowed}
+
+/* In-chat booking */
+.cb-step{background:var(--blue-lt);border-radius:10px;padding:11px 13px;margin:5px 0}
+.cb-step label{display:block;font-size:.76rem;font-weight:700;color:var(--blue-dk);margin-bottom:6px}
+.cb-step input,.cb-step select{width:100%;padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:.82rem;font-family:var(--font);outline:none;color:var(--dark);background:#fff}
+.cb-step input:focus,.cb-step select:focus{border-color:var(--blue)}
+.cb-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px}
+.cb-slot{padding:6px 3px;border:1.5px solid var(--border);border-radius:6px;text-align:center;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .15s;background:#fff}
+.cb-slot:hover{border-color:var(--blue);color:var(--blue)}
+.cb-slot.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.cb-slot.na{background:var(--off);color:var(--border);cursor:not-allowed}
+.cb-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;padding:9px;border:none;border-radius:8px;background:var(--blue);color:#fff;font-size:.83rem;font-weight:700;margin-top:9px;cursor:pointer;gap:6px;transition:background .2s}
+.cb-btn:hover{background:var(--blue-dk)}
+.cb-btn.sec{background:transparent;color:var(--blue);border:1.5px solid var(--border);margin-top:5px}
+.cb-btn.sec:hover{background:var(--blue-lt)}
+.rem-picks{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.rem-pick{display:flex;align-items:center;gap:8px;font-size:.79rem;cursor:pointer}
+.rem-pick input{accent-color:var(--blue);width:14px;height:14px}
+.cc{background:#fff;border:1px solid var(--border);border-radius:9px;padding:11px 13px;font-size:.8rem}
+.cc-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)}
+.cc-row:last-child{border:none}
+.cc-row span:first-child{color:var(--grey)}
+.cc-row strong{font-weight:600;text-align:right;max-width:55%}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:900px){
+  .g2,.hero .wrap,.bk-wrap,.loc-grid,.footer-main{grid-template-columns:1fr}
+  .g3{grid-template-columns:1fr 1fr}
+  .g4{grid-template-columns:1fr 1fr}
+  .hero-img-wrap{order:-1}
+  .bk-panel,.bk-form{padding:32px 22px}
+  .nav-links,.nav-phone,.nhs-nav-badge{display:none}
+  .hbg{display:block}
+  .proof-inner{grid-template-columns:1fr}
+  .proof-divider{display:none}
+  .proof-quotes{grid-template-columns:1fr}
+  #nova-win{width:calc(100vw - 32px);right:16px;bottom:92px}
+  /* mobile wizard */
+  .wizard-steps{display:block}
+  .desk-form{display:none}
+}
+@media(max-width:600px){
+  .sec{padding:56px 0}
+  .g3,.g4{grid-template-columns:1fr}
+  .hero-stats{gap:14px}
+  .float-card{display:none}
+  .fr{grid-template-columns:1fr}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .footer-main{grid-template-columns:1fr;gap:28px}
+  .proof-quotes{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<!-- ── TOPBAR ─────────────────────────────────────────── -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-items">
+      <a href="tel:01608123456" class="tb-item tb-phone">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        01608 123 456
+      </a>
+      <div class="tb-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Cromwell Business Park, Chipping Norton OX7 5SR
+      </div>
+    </div>
+    <div class="tb-items">
+      <a href="mailto:chippingnorton@bloxdentsmiles.co.uk" class="tb-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        chippingnorton@bloxdentsmiles.co.uk
+      </a>
+      <div class="tb-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Mon–Fri 8:00–18:30 · Sat 9:00–13:00
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#" class="logo">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 2.5 1 4.5 2.5 6L9 21h6l1.5-6C18 13.5 19 11.5 19 9c0-4-3-7-7-7z"/></svg></div>
+      <div class="logo-text">Bloxdent Smiles<small>CHIPPING NORTON</small></div>
+    </a>
+
+    <!-- NHS trust mark -->
+    <div class="nhs-nav-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      NHS Registered Practice
+    </div>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#team">Our Team</a>
+      <a href="#location">Find Us</a>
+    </div>
+    <a href="tel:01608123456" class="nav-phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      01608 123 456
+    </a>
+    <a href="#booking" class="btn btn-p btn-sm" style="margin-left:8px">Book Appointment</a>
+    <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="tel:01608123456" class="mob-phone">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    01608 123 456
+  </a>
+  <a href="#services" onclick="cM()">Services</a>
+  <a href="#team" onclick="cM()">Our Team</a>
+  <a href="#location" onclick="cM()">Find Us</a>
+  <a href="#booking" class="btn btn-p" onclick="cM()">Book Appointment</a>
+</div>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="rev">
+      <div class="hero-eye">
+        <span class="pill pill-nhs">NHS</span>
+        <span class="pill pill-open">✦ Now Accepting New Patients</span>
+      </div>
+      <h1>Your <em>Healthy Smile</em><br>Starts Here.</h1>
+      <p class="hero-desc">Friendly, professional dental care for all the family in Chipping Norton — NHS and private patients welcome.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn btn-p">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book Online
+        </a>
+        <a href="tel:01608123456" class="btn btn-o">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Us
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs">
+          <strong>NHS</strong>
+          <span>Treatments available</span>
+        </div>
+        <div class="hs">
+          <strong>48 hrs</strong>
+          <span>Seen within 2 days</span>
+        </div>
+        <div class="hs">
+          <strong>Mon–Sat</strong>
+          <span>Emergency slots</span>
+        </div>
+        <div class="hs">
+          <strong>Free</strong>
+          <span>On-site parking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-img-wrap rev d2">
+      <div class="hero-photo">
+        <!-- Real Unsplash photo — replace src with your own practice photo -->
+        <img
+          src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=900&q=80&auto=format&fit=crop"
+          alt="Modern dental practice interior"
+          loading="eager"
+          onerror="this.parentElement.innerHTML='<div style=\'height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:linear-gradient(135deg,#C8E3F5,#B8EDE5);padding:20px\'><svg viewBox=\'0 0 120 100\' width=\'80\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><circle cx=\'60\' cy=\'36\' r=\'20\' fill=\'%231A6FA8\' opacity=\'.2\'/><path d=\'M36 76C36 68 44 60 60 60s24 8 24 16\' stroke=\'%232EB8A0\' stroke-width=\'3\' fill=\'none\'/></svg><p style=\'font-size:.8rem;color:%231A6FA8;font-weight:600;opacity:.6\'>Replace with practice photo</p></div>'"
+        />
+      </div>
+      <div class="float-card fc1">
+        <div class="fi" style="background:var(--mint-lt)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2EB8A0" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div><strong>CQC Registered</strong><span>Safe &amp; regulated</span></div>
+      </div>
+      <div class="float-card fc2">
+        <div class="pulse"></div>
+        <div><strong>Open Today</strong><span>Slots available now</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ─────────────────────────────────────────── -->
+<section class="sec sec--alt" id="services">
+  <div class="wrap">
+    <div class="center rev" style="margin-bottom:44px">
+      <span class="badge">What We Offer</span>
+      <h2 class="sec-title">Care For Every Smile</h2>
+      <p class="sec-sub">From routine check-ups to cosmetic treatments — all under one roof, NHS and private.</p>
+    </div>
+    <div class="g3">
+      <div class="svc-card rev d1"><div class="svc-icon" style="background:#EBF5FF">🦷</div><h3>Check-ups &amp; Cleaning</h3><p>Regular exams and hygienist cleans to keep your teeth healthy and catch issues early.</p><a href="#booking" class="svc-link">Book now →</a></div>
+      <div class="svc-card rev d2"><div class="svc-icon" style="background:#E6F8F5">🪥</div><h3>Fillings &amp; Restorations</h3><p>Tooth-coloured fillings, crowns and inlays to restore damaged or decayed teeth naturally.</p><a href="#booking" class="svc-link">Book now →</a></div>
+      <div class="svc-card rev d3"><div class="svc-icon" style="background:#EBF5FF">😁</div><h3>Teeth Whitening</h3><p>Professional whitening that's safe, effective and delivers a noticeably brighter result.</p><a href="#booking" class="svc-link">Book now →</a></div>
+      <div class="svc-card rev d1"><div class="svc-icon" style="background:#E6F8F5">🦴</div><h3>Dental Implants</h3><p>Permanent, natural-looking implants to replace missing teeth and restore your confidence.</p><a href="#booking" class="svc-link">Book now →</a></div>
+      <div class="svc-card rev d2"><div class="svc-icon" style="background:#EBF5FF">📋</div><h3>Orthodontics</h3><p>Braces and clear aligners for children and adults to straighten teeth and improve bite.</p><a href="#booking" class="svc-link">Book now →</a></div>
+      <div class="svc-card rev d3"><div class="svc-icon" style="background:#E6F8F5">🚨</div><h3>Emergency Dentistry</h3><p>Same-day slots Mon–Sat for toothache, broken teeth and lost fillings. Call or chat us.</p><a href="tel:01608123456" class="svc-link">Call now →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF STRIP ───────────────────────────────── -->
+<div class="proof-strip">
+  <div class="wrap rev">
+    <div class="proof-inner">
+      <div class="proof-score">
+        <div class="big">4.9</div>
+        <div class="stars">★★★★★</div>
+        <small>120+ Google reviews</small>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-quotes">
+        <div class="pq">
+          <p>"Called at 8am with a toothache and was seen by 10am the same day. Absolutely brilliant — a genuine lifesaver."</p>
+          <div class="pq-meta"><div class="pq-av" style="background:#1A6FA8">MM</div><div><strong>Mark M.</strong><span>Chipping Norton</span></div></div>
+        </div>
+        <div class="pq">
+          <p>"So easy to register as an NHS patient. The whole team are welcoming and the surgery is spotless and modern."</p>
+          <div class="pq-meta"><div class="pq-av" style="background:#2EB8A0">TW</div><div><strong>Tom W.</strong><span>Charlbury</span></div></div>
+        </div>
+        <div class="pq">
+          <p>"I'd dreaded the dentist for years. The team here completely changed that — I actually feel at ease now. Highly recommend."</p>
+          <div class="pq-meta"><div class="pq-av" style="background:#7C3AED">RK</div><div><strong>Rachel K.</strong><span>Woodstock</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BOOKING ───────────────────────────────────────────── -->
+<section class="booking-sec" id="booking">
+  <div class="wrap">
+    <div class="center rev" style="margin-bottom:36px">
+      <span class="badge">Book Online</span>
+      <h2 class="sec-title">Reserve Your Appointment</h2>
+      <p class="sec-sub">Available 24/7 · Confirmed within 1 hour · Reminders sent automatically</p>
+    </div>
+    <div class="bk-wrap rev">
+      <!-- Panel -->
+      <div class="bk-panel">
+        <h2>Why Bloxdent Smiles?</h2>
+        <p>NHS accessibility with the warmth of a modern, friendly practice.</p>
+        <div class="bk-items">
+          <div class="bk-item"><div class="bk-ico">🏥</div><div><strong>NHS &amp; Private</strong><span>Full NHS treatments available</span></div></div>
+          <div class="bk-item"><div class="bk-ico">⏱️</div><div><strong>Extended Hours</strong><span>Evenings &amp; Saturdays</span></div></div>
+          <div class="bk-item"><div class="bk-ico">🆕</div><div><strong>New Patients Welcome</strong><span>Registering NHS patients now</span></div></div>
+          <div class="bk-item"><div class="bk-ico">🅿️</div><div><strong>Free Parking</strong><span>Plenty of spaces on site</span></div></div>
+          <div class="bk-item"><div class="bk-ico">🔔</div><div><strong>Reminders</strong><span>SMS, email or WhatsApp</span></div></div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="bk-form">
+        <h3>Book an Appointment</h3>
+        <p class="sub">Confirmed within 1 hour during opening hours.</p>
+
+        <!-- DESKTOP FORM -->
+        <div class="desk-form">
+          <form id="bkForm" onsubmit="submitBk(event)">
+            <div class="fr">
+              <div class="fg"><label>First Name *</label><input type="text" placeholder="Jane" required/></div>
+              <div class="fg"><label>Last Name *</label><input type="text" placeholder="Smith" required/></div>
+            </div>
+            <div class="fr">
+              <div class="fg"><label>Phone *</label><input type="tel" id="bk-phone" placeholder="07700 900 000" required/></div>
+              <div class="fg"><label>Email *</label><input type="email" id="bk-email" placeholder="jane@example.com" required/></div>
+            </div>
+            <div class="fg">
+              <label>Treatment *</label>
+              <select required>
+                <option value="">Select a service…</option>
+                <option>Check-up &amp; Cleaning (NHS)</option>
+                <option>Filling / Restoration (NHS)</option>
+                <option>Teeth Whitening (Private)</option>
+                <option>Dental Implants (Private)</option>
+                <option>Orthodontics Consultation</option>
+                <option>Emergency Appointment</option>
+                <option>Children's Dentistry (NHS)</option>
+                <option>New Patient Registration</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Preferred Date *</label>
+              <input type="date" id="bkDate" required oninput="renderSlots()"/>
+            </div>
+            <div id="slotWrap" style="display:none">
+              <div class="slot-label">Available Times</div>
+              <div class="slots" id="slotGrid"></div>
+            </div>
+            <div class="rem-row">
+              <div class="ri">🔔</div>
+              <div style="flex:1">
+                <p>Send me reminders via:</p>
+                <div class="rem-checks">
+                  <label><input type="checkbox" checked/> SMS</label>
+                  <label><input type="checkbox" checked/> Email</label>
+                  <label><input type="checkbox"/> WhatsApp</label>
+                </div>
+              </div>
+            </div>
+            <div class="fcheck"><input type="checkbox" required/><label>I agree to Bloxdent Smiles contacting me about this appointment *</label></div>
+            <button type="submit" class="btn btn-p" style="width:100%;justify-content:center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Request Appointment
+            </button>
+          </form>
+        </div>
+
+        <!-- MOBILE WIZARD -->
+        <div class="wizard-steps">
+          <div class="wiz-dots">
+            <div class="wiz-dot active" id="wd0"></div>
+            <div class="wiz-dot" id="wd1"></div>
+            <div class="wiz-dot" id="wd2"></div>
+            <div class="wiz-label" id="wiz-lbl">Step 1 of 3 — Your Details</div>
+          </div>
+          <!-- Step 1 -->
+          <div class="wiz-panel active" id="wp0">
+            <div class="fg"><label>First Name *</label><input id="wfn" type="text" placeholder="Jane" required/></div>
+            <div class="fg"><label>Last Name *</label><input id="wln" type="text" placeholder="Smith" required/></div>
+            <div class="fg"><label>Phone *</label><input id="wph" type="tel" placeholder="07700 900 000" required/></div>
+            <div class="fg"><label>Email *</label><input id="wem" type="email" placeholder="jane@example.com" required/></div>
+            <div class="wiz-nav"><button type="button" class="btn btn-p" style="flex:1;justify-content:center" onclick="wizNext(1)">Next →</button></div>
+          </div>
+          <!-- Step 2 -->
+          <div class="wiz-panel" id="wp1">
+            <div class="fg">
+              <label>Treatment *</label>
+              <select id="wsvc">
+                <option value="">Select a service…</option>
+                <option>Check-up &amp; Cleaning (NHS)</option>
+                <option>Filling / Restoration (NHS)</option>
+                <option>Teeth Whitening (Private)</option>
+                <option>Dental Implants (Private)</option>
+                <option>Orthodontics Consultation</option>
+                <option>Emergency Appointment</option>
+                <option>Children's Dentistry (NHS)</option>
+                <option>New Patient Registration</option>
+              </select>
+            </div>
+            <div class="fg"><label>Preferred Date *</label><input type="date" id="wdate" oninput="renderWizSlots()"/></div>
+            <div id="wizSlotWrap" style="display:none">
+              <div class="slot-label">Available Times</div>
+              <div class="slots" id="wizSlots"></div>
+            </div>
+            <div class="wiz-nav">
+              <button type="button" class="btn btn-o" onclick="wizNext(0)">← Back</button>
+              <button type="button" class="btn btn-p" style="flex:1;justify-content:center" onclick="wizNext(2)">Next →</button>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="wiz-panel" id="wp2">
+            <div class="rem-row" style="margin-bottom:16px">
+              <div class="ri">🔔</div>
+              <div style="flex:1">
+                <p>Send me reminders via:</p>
+                <div class="rem-checks">
+                  <label><input type="checkbox" checked/> SMS</label>
+                  <label><input type="checkbox" checked/> Email</label>
+                  <label><input type="checkbox"/> WhatsApp</label>
+                </div>
+              </div>
+            </div>
+            <div class="fcheck"><input type="checkbox" id="wizConsent" required/><label>I agree to Bloxdent Smiles contacting me *</label></div>
+            <div class="wiz-nav">
+              <button type="button" class="btn btn-o" onclick="wizNext(1)">← Back</button>
+              <button type="button" class="btn btn-p" style="flex:1;justify-content:center" onclick="submitWiz()">Confirm Booking</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="bk-success" id="bkSuccess">
+          <div class="si">✅</div>
+          <h4>Appointment Requested!</h4>
+          <p>We'll confirm by email within 1 hour during opening hours.</p>
+          <div class="rem-confirm">
+            <strong>🔔 Reminders scheduled</strong>
+            Confirmation email now · SMS 24hrs before · SMS 2hrs before your appointment
+          </div>
+          <a href="#" onclick="resetBk();return false" class="btn btn-o" style="margin-top:12px;display:inline-flex">Book Another</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ──────────────────────────────────────────────── -->
+<section class="sec" id="team">
+  <div class="wrap">
+    <div class="center rev" style="margin-bottom:40px">
+      <span class="badge">Meet The Team</span>
+      <h2 class="sec-title">Friendly Faces, Expert Hands</h2>
+      <p class="sec-sub">Our experienced team makes every visit as comfortable and stress-free as possible.</p>
+    </div>
+    <div class="g4 rev">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80&auto=format&fit=crop&crop=face" alt="Dr. James Clarke" onerror="var p=this.parentElement;p.className='team-photo-ph';p.innerHTML='👨‍⚕️'"/>
+        </div>
+        <div class="team-info"><h4>Dr. James Clarke</h4><div class="team-role">Principal Dentist</div><p>BDS Manchester · 15+ years in NHS &amp; cosmetic dentistry.</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop&crop=face" alt="Dr. Sarah Patel" onerror="var p=this.parentElement;p.className='team-photo-ph';p.innerHTML='👩‍⚕️'"/>
+        </div>
+        <div class="team-info"><h4>Dr. Sarah Patel</h4><div class="team-role">Associate Dentist</div><p>Specialist in orthodontics and preventive family care.</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo-ph">🧑‍⚕️</div>
+        <div class="team-info"><h4>Amara Johnson</h4><div class="team-role">Lead Dental Nurse</div><p>Qualified nurse passionate about patient comfort.</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo-ph">👩‍💼</div>
+        <div class="team-info"><h4>Lucy Thornton</h4><div class="team-role">Practice Manager</div><p>Always on hand for appointments, queries &amp; registrations.</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:.78rem;color:var(--grey)">* Replace with actual staff names &amp; photos.</p>
+  </div>
+</section>
+
+<!-- ── LOCATION ──────────────────────────────────────────── -->
+<section class="sec sec--alt" id="location">
+  <div class="wrap">
+    <div class="center rev" style="margin-bottom:40px">
+      <span class="badge">Find Us</span>
+      <h2 class="sec-title">Easy to Reach</h2>
+      <p class="sec-sub">Next to the medical centre &amp; Aldi, Cromwell Business Park — free parking on site.</p>
+    </div>
+    <div class="loc-grid rev">
+      <div>
+        <div class="ic">
+          <div class="ir"><div class="ii">📍</div><div><strong>Address</strong><span>Roundway House, Cromwell Business Park, Chipping Norton, OX7 5SR</span></div></div>
+          <div class="ir"><div class="ii">📞</div><div><strong>Phone</strong><span><a href="tel:01608123456" style="color:var(--blue)">01608 123 456</a></span></div></div>
+          <div class="ir"><div class="ii">✉️</div><div><strong>Email</strong><span><a href="mailto:chippingnorton@bloxdentsmiles.co.uk" style="color:var(--blue)">chippingnorton@bloxdentsmiles.co.uk</a></span></div></div>
+          <div class="ir"><div class="ii">🅿️</div><div><strong>Parking</strong><span>Free on-site parking available</span></div></div>
+        </div>
+        <div class="ic">
+          <h4 style="font-size:.86rem;font-weight:700;margin-bottom:11px">Opening Hours</h4>
+          <table class="htbl">
+            <tr><td>Monday</td><td class="op">8:00 – 18:30</td></tr>
+            <tr><td>Tuesday</td><td class="op">8:00 – 18:30</td></tr>
+            <tr><td>Wednesday</td><td class="op">8:00 – 18:30</td></tr>
+            <tr><td>Thursday</td><td class="op">8:00 – 18:30</td></tr>
+            <tr><td>Friday</td><td class="op">8:00 – 17:00</td></tr>
+            <tr><td>Saturday</td><td class="op">9:00 – 13:00</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </table>
+        </div>
+        <a href="https://www.google.com/maps/search/Roundway+House+Cromwell+Business+Park+Chipping+Norton" target="_blank" class="btn btn-p" style="width:100%;justify-content:center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+      <div class="loc-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2467.72!2d-1.5408!3d51.9451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c3b0f3e5f5a5%3A0x0!2zQ2hpcHBpbmcgTm9ydG9u!5e0!3m2!1sen!2suk!4v1620000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bloxdent Smiles location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <div class="logo" style="filter:brightness(2)">
+        <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 2.5 1 4.5 2.5 6L9 21h6l1.5-6C18 13.5 19 11.5 19 9c0-4-3-7-7-7z"/></svg></div>
+        <div class="logo-text" style="color:#fff">Bloxdent Smiles<small style="color:rgba(255,255,255,.4)">CHIPPING NORTON</small></div>
+      </div>
+      <p>Friendly dental care for all the family. NHS and private patients welcome in Chipping Norton.</p>
+      <div class="fsoc">
+        <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,.7)"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+      <div class="cqc">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        CQC Registered Practice
+      </div>
+    </div>
+    <div><h5>Services</h5><ul>
+      <li><a href="#booking">Check-up &amp; Cleaning</a></li>
+      <li><a href="#booking">Fillings &amp; Restorations</a></li>
+      <li><a href="#booking">Teeth Whitening</a></li>
+      <li><a href="#booking">Dental Implants</a></li>
+      <li><a href="#booking">Orthodontics</a></li>
+      <li><a href="#booking">Emergency Care</a></li>
+    </ul></div>
+    <div><h5>Practice</h5><ul>
+      <li><a href="#team">Meet the Team</a></li>
+      <li><a href="#location">Find Us</a></li>
+      <li><a href="#booking">New Patients</a></li>
+      <li><a href="#">NHS Information</a></li>
+      <li><a href="#">Careers</a></li>
+    </ul></div>
+    <div><h5>Contact</h5>
+      <div class="fc-d"><span style="opacity:.55">📞</span><a href="tel:01608123456" style="color:rgba(255,255,255,.65)">01608 123 456</a></div>
+      <div class="fc-d"><span style="opacity:.55">✉️</span><a href="mailto:chippingnorton@bloxdentsmiles.co.uk" style="color:rgba(255,255,255,.65)">chippingnorton@bloxdentsmiles.co.uk</a></div>
+      <div class="fc-d"><span style="opacity:.55">📍</span><span>Roundway House, Cromwell Business Park, OX7 5SR</span></div>
+      <div class="fc-d"><span style="opacity:.55">⏰</span><span>Mon–Fri 8:00–18:30 · Sat 9:00–13:00</span></div>
+    </div>
+  </div>
+  <div class="footer-bot"><div class="wrap">
+    <span>© 2025 Bloxdent Smiles. Part of the <a href="https://bloxdentsmiles.co.uk">Bloxdent</a> group.</span>
+    <div style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Accessibility</a></div>
+  </div></div>
+</footer>
+
+<!-- ── SCROLL TOP ─────────────────────────────────────────── -->
+<button id="goTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ══════════════════════════════════════════════════════════
+     NOVA — AI CHATBOT
+     ══════════════════════════════════════════════════════════ -->
+<div id="nova-launcher">
+  <div id="nova-greeting">Hi there 👋 I'm Nova — ask me anything or book an appointment!</div>
+  <button id="nova-btn" onclick="toggleNova()" aria-label="Open chat with Nova">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <div id="nova-notif">1</div>
+  </button>
+</div>
+
+<div id="nova-win">
+  <div class="nh">
+    <div class="nh-av">🦷</div>
+    <div class="nh-info">
+      <strong>Nova · Bloxdent Smiles</strong>
+      <span><div class="nh-dot"></div> Online · typically replies instantly</span>
+    </div>
+    <button class="nh-close" onclick="toggleNova()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="nm" id="novaMsg"></div>
+  <div class="ni">
+    <textarea id="novaInput" placeholder="Message Nova…" rows="1" onkeydown="novaKey(event)" oninput="novaResize(this)"></textarea>
+    <button class="ni-send" onclick="novaSend()" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<script>
+/* ── PROGRESS + SCROLL ─────────────────────────────────── */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  document.getElementById('goTop').classList.toggle('show',h.scrollTop>360);
+});
+
+/* ── MOBILE NAV ────────────────────────────────────────── */
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mobMenu');
+hbg.onclick=()=>{const o=mob.classList.toggle('open');['rotate(45deg) translate(5px,5px)','0','rotate(-45deg) translate(5px,-5px)'].forEach((v,i)=>{const s=hbg.querySelectorAll('span')[i];if(i===1)s.style.opacity=o?'0':'1';else s.style.transform=o?v:'';});};
+function cM(){mob.classList.remove('open');hbg.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='1';});}
+
+/* ── REVEAL ────────────────────────────────────────────── */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+
+/* ── BOOKING (DESKTOP) ─────────────────────────────────── */
+const SLOTS=['8:00','8:30','9:00','9:30','10:00','10:30','11:00','11:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'];
+const NA=[2,5,9,12];
+let bkSlot=null;
+const _bkDate=document.getElementById('bkDate');if(_bkDate)_bkDate.min=new Date().toISOString().split('T')[0];
+
+function renderSlots(){
+  if(!document.getElementById('bkDate').value)return;
+  const w=document.getElementById('slotWrap'),g=document.getElementById('slotGrid');
+  w.style.display='block';g.innerHTML='';bkSlot=null;
+  SLOTS.forEach((t,i)=>{
+    const b=document.createElement('button');b.type='button';b.className='slot'+(NA.includes(i)?' na':'');b.textContent=t;
+    if(!NA.includes(i))b.onclick=function(){document.querySelectorAll('#slotGrid .slot').forEach(s=>s.classList.remove('sel'));this.classList.add('sel');bkSlot=t;};
+    g.appendChild(b);
+  });
+}
+function submitBk(e){
+  e.preventDefault();
+  document.getElementById('bkForm').style.display='none';
+  document.getElementById('bkSuccess').style.display='block';
+}
+function resetBk(){
+  document.getElementById('bkForm')?.reset();
+  document.getElementById('bkForm').style.display='block';
+  document.getElementById('bkSuccess').style.display='none';
+  document.getElementById('slotWrap').style.display='none';
+  // Reset mobile wizard
+  wizGo(0);
+  document.querySelectorAll('.wiz-panel').forEach((p,i)=>{p.classList.toggle('active',i===0);});
+  bkSlot=null;
+}
+
+/* ── MOBILE WIZARD ─────────────────────────────────────── */
+let wizStep=0,wizSlot=null;
+if(document.getElementById('wdate'))document.getElementById('wdate').min=new Date().toISOString().split('T')[0];
+
+const WIZ_LABELS=['Step 1 of 3 — Your Details','Step 2 of 3 — Treatment & Date','Step 3 of 3 — Reminders & Confirm'];
+function wizGo(step){
+  document.querySelectorAll('.wiz-panel').forEach((p,i)=>p.classList.toggle('active',i===step));
+  [0,1,2].forEach(i=>{
+    const d=document.getElementById('wd'+i);
+    d.classList.toggle('active',i===step);
+    d.classList.toggle('done',i<step);
+  });
+  document.getElementById('wiz-lbl').textContent=WIZ_LABELS[step];
+  wizStep=step;
+}
+function wizNext(step){
+  // Basic validation
+  if(step===1){
+    const fn=document.getElementById('wfn'),ln=document.getElementById('wln'),ph=document.getElementById('wph'),em=document.getElementById('wem');
+    if(!fn.value||!ln.value||!ph.value||!em.value){[fn,ln,ph,em].forEach(f=>{if(!f.value)f.style.borderColor='#EF4444';else f.style.borderColor='';});return;}
+  }
+  wizGo(step);
+}
+function renderWizSlots(){
+  const d=document.getElementById('wdate').value;if(!d)return;
+  const w=document.getElementById('wizSlotWrap'),g=document.getElementById('wizSlots');
+  w.style.display='block';g.innerHTML='';wizSlot=null;
+  SLOTS.forEach((t,i)=>{
+    const b=document.createElement('button');b.type='button';b.className='slot'+(NA.includes(i)?' na':'');b.textContent=t;
+    if(!NA.includes(i))b.onclick=function(){document.querySelectorAll('#wizSlots .slot').forEach(s=>s.classList.remove('sel'));this.classList.add('sel');wizSlot=t;};
+    g.appendChild(b);
+  });
+}
+function submitWiz(){
+  if(!document.getElementById('wizConsent').checked){alert('Please agree to be contacted.');return;}
+  document.querySelector('.wizard-steps').style.display='none';
+  document.getElementById('bkSuccess').style.display='block';
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NOVA CHATBOT ENGINE
+   ═══════════════════════════════════════════════════════════ */
+let novaOpen=false;
+const novaWin=document.getElementById('nova-win');
+const novaBox=document.getElementById('novaMsg');
+const SVCS=['Check-up & Cleaning (NHS)','Filling / Restoration (NHS)','Teeth Whitening (Private)','Dental Implants (Private)','Orthodontics Consultation','Emergency Appointment','Children\'s Dentistry (NHS)','New Patient Registration'];
+
+// State
+const S={IDLE:0,BOOK_NAME:1,BOOK_PHONE:2,BOOK_EMAIL:3,BOOK_SVC:4,BOOK_DATE:5,BOOK_TIME:6,BOOK_REM:7,BOOK_CONFIRM:8,DONE:9};
+let st=S.IDLE;
+let bk={name:'',phone:'',email:'',svc:'',date:'',time:'',rem:{sms:true,email:true,wa:false}};
+
+function toggleNova(){
+  novaOpen=!novaOpen;
+  novaWin.classList.toggle('open',novaOpen);
+  document.getElementById('nova-notif').classList.remove('show');
+  document.getElementById('nova-greeting').classList.remove('show');
+  if(novaOpen&&novaBox.children.length===0) initNova();
+  if(novaOpen)setTimeout(()=>novaBox.scrollTop=novaBox.scrollHeight,50);
+}
+
+function initNova(){
+  novaBot("Hi! I'm Nova 👋 I'm here to help you with anything at Bloxdent Smiles — from questions about our services to booking an appointment right here in this chat. What can I help you with today?",[
+    {l:'📅 Book an appointment',f:startBook},
+    {l:'🦷 What services do you offer?',f:showSvcs},
+    {l:'🕐 Opening hours',f:showHours},
+    {l:'📍 Where are you located?',f:showLoc},
+    {l:'🏥 NHS information',f:showNHS},
+    {l:'🚨 I have a dental emergency',f:showEmergency},
+  ]);
+}
+
+/* ── FAQ handlers ── */
+function showSvcs(){
+  uBub('What services do you offer?');
+  novaBot("We offer a full range of NHS and private dental treatments:\n\n🦷 Check-up & Cleaning (NHS)\n🪥 Fillings & Restorations (NHS)\n😁 Teeth Whitening\n🦴 Dental Implants\n📋 Orthodontics\n🚨 Emergency Dentistry\n👶 Children's Dentistry\n\nAll standard NHS charges apply for NHS treatments. Would you like to book?",[
+    {l:'📅 Book an appointment',f:startBook},{l:'🔙 Main menu',f:menu},
+  ]);
+}
+function showHours(){
+  uBub('Opening hours?');
+  novaBot("We have extended hours to suit busy schedules:\n\n📅 Monday – Thursday: 8:00 – 18:30\n📅 Friday: 8:00 – 17:00\n📅 Saturday: 9:00 – 13:00\n📅 Sunday: Closed\n\nNeed an appointment?",[
+    {l:'📅 Book now',f:startBook},{l:'🔙 Main menu',f:menu},
+  ]);
+}
+function showLoc(){
+  uBub('Where are you located?');
+  novaBot("We're conveniently located at:\n\n📍 Roundway House, Cromwell Business Park, Chipping Norton, OX7 5SR\n\nWe're right next to the medical centre and Aldi — free parking available on site.\n\n📞 01608 123 456\n✉️ chippingnorton@bloxdentsmiles.co.uk",[
+    {l:'📅 Book an appointment',f:startBook},{l:'🔙 Main menu',f:menu},
+  ]);
+}
+function showNHS(){
+  uBub('NHS information');
+  novaBot("Great news — we're a fully NHS registered practice currently accepting new patients! 🎉\n\nStandard NHS charges (England):\n🔵 Band 1 – Check-up, scale & polish: £26.80\n🔵 Band 2 – Fillings, extractions: £73.50\n🔵 Band 3 – Crowns, bridges, dentures: £319.10\n\nChildren under 18 are treated free on the NHS. Want to register?",[
+    {l:'📅 Register as NHS patient',f:startBook},{l:'🔙 Main menu',f:menu},
+  ]);
+}
+function showEmergency(){
+  uBub('I have a dental emergency');
+  novaBot("I'm sorry to hear that — let's get you seen as soon as possible! 🚨\n\nWe offer same-day emergency slots Monday to Saturday.\n\n📞 The fastest way is to call us directly: 01608 123 456\n\nAlternatively I can book you in right now through this chat — shall I do that?",[
+    {l:'📅 Book emergency slot',f:startBook},{l:'📞 Call 01608 123 456',f:()=>{window.location.href='tel:01608123456';}},{l:'🔙 Main menu',f:menu},
+  ]);
+}
+function menu(){
+  uBub('Main menu');
+  novaBot("Of course! What would you like help with?",[
+    {l:'📅 Book an appointment',f:startBook},
+    {l:'🦷 Services',f:showSvcs},
+    {l:'🕐 Hours',f:showHours},
+    {l:'📍 Location',f:showLoc},
+    {l:'🏥 NHS info',f:showNHS},
+    {l:'🚨 Emergency',f:showEmergency},
+  ]);
+}
+
+/* ── BOOKING FLOW ── */
+function startBook(){
+  uBub("I'd like to book an appointment");
+  st=S.BOOK_NAME;
+  bk={name:'',phone:'',email:'',svc:'',date:'',time:'',rem:{sms:true,email:true,wa:false}};
+  novaBot("Let's get that sorted! 😊\n\nFirst, what's your full name?");
+}
+
+function handleInput(txt){
+  txt=txt.trim();if(!txt)return;
+  if(st===S.IDLE){
+    const l=txt.toLowerCase();
+    if(l.match(/book|appoint/))return startBook();
+    if(l.match(/hour|open|time|when/))return showHours();
+    if(l.match(/serv|treat|offer|do you/))return showSvcs();
+    if(l.match(/where|location|address|find|park/))return showLoc();
+    if(l.match(/nhs|price|cost|charge|fee/))return showNHS();
+    if(l.match(/emergency|urgent|pain|tooth.?ache|broken|lost fill/))return showEmergency();
+    uBub(txt);
+    novaBot("Thanks for your message! I can help with bookings, services, hours, location, NHS details and emergencies. What would you like to know?",[
+      {l:'📅 Book now',f:startBook},{l:'🦷 Services',f:showSvcs},{l:'📍 Location',f:showLoc},{l:'🏥 NHS',f:showNHS},
+    ]);
+    return;
+  }
+  if(st===S.BOOK_NAME){bk.name=txt;uBub(txt);st=S.BOOK_PHONE;novaBot(`Nice to meet you, ${bk.name.split(' ')[0]}! 😊\n\nWhat's the best phone number for you?`);return;}
+  if(st===S.BOOK_PHONE){bk.phone=txt;uBub(txt);st=S.BOOK_EMAIL;novaBot("And your email address? We'll send your confirmation and reminders here.");return;}
+  if(st===S.BOOK_EMAIL){bk.email=txt;uBub(txt);st=S.BOOK_SVC;showSvcPicker();return;}
+  if(st===S.BOOK_DATE){bk.date=txt;uBub(txt);showTimePicker();return;}
+  uBub(txt);novaBot("Please use the options above, or type your answer and I'll do my best to help. 😊");
+}
+
+function showSvcPicker(){
+  st=S.BOOK_SVC;
+  const w=mkBotEl();
+  w.innerHTML=`<div class="msg-av">🦷</div><div>
+    <div class="mb">What treatment do you need?
+      <div class="cb-step" style="margin-top:9px">
+        <label>Treatment Type</label>
+        <select id="cbSvc" onchange="pickSvc(this.value)">
+          <option value="">Choose…</option>${SVCS.map(s=>`<option>${s}</option>`).join('')}
+        </select>
+      </div>
+    </div><div class="mt">${gt()}</div></div>`;
+  novaBox.appendChild(w);sc();
+}
+function pickSvc(v){if(!v)return;bk.svc=v;document.getElementById('cbSvc').closest('.msg').remove();uBub(v);st=S.BOOK_DATE;showDatePicker();}
+
+function showDatePicker(){
+  const w=mkBotEl();const minD=new Date().toISOString().split('T')[0];
+  w.innerHTML=`<div class="msg-av">🦷</div><div>
+    <div class="mb">What date works for you?
+      <div class="cb-step" style="margin-top:9px">
+        <label>Preferred Date</label>
+        <input type="date" id="cbDate" min="${minD}" onchange="pickDate(this.value)"/>
+      </div>
+    </div><div class="mt">${gt()}</div></div>`;
+  novaBox.appendChild(w);sc();
+}
+function pickDate(v){if(!v)return;bk.date=v;document.getElementById('cbDate').closest('.msg').remove();uBub(fmtDate(v));showTimePicker();}
+
+function showTimePicker(){
+  st=S.BOOK_TIME;
+  const taken=[2,5,9,12];
+  const w=mkBotEl();
+  const slotsHtml=SLOTS.map((t,i)=>{
+    const na=taken.includes(i);
+    return `<div class="cb-slot${na?' na':''}" ${na?'':`onclick="pickTime('${t}',this)"`}>${t}</div>`;
+  }).join('');
+  w.innerHTML=`<div class="msg-av">🦷</div><div>
+    <div class="mb">Pick a time for ${fmtDate(bk.date)}:
+      <div class="cb-slots" style="margin-top:8px">${slotsHtml}</div>
+    </div><div class="mt">${gt()}</div></div>`;
+  novaBox.appendChild(w);sc();
+}
+function pickTime(t,el){
+  bk.time=t;
+  document.querySelectorAll('.cb-slot').forEach(s=>s.classList.remove('sel'));
+  el.classList.add('sel');
+  setTimeout(()=>{el.closest('.msg').remove();uBub(t);showRemPicker();},280);
+}
+
+function showRemPicker(){
+  st=S.BOOK_REM;
+  const w=mkBotEl();
+  w.innerHTML=`<div class="msg-av">🦷</div><div>
+    <div class="mb">🔔 How would you like to receive reminders?
+      <div class="cb-step" style="margin-top:9px">
+        <div class="rem-picks">
+          <label class="rem-pick"><input type="checkbox" id="rSMS" checked/> 📱 SMS (24hrs & 2hrs before)</label>
+          <label class="rem-pick"><input type="checkbox" id="rEML" checked/> 📧 Email confirmation &amp; reminder</label>
+          <label class="rem-pick"><input type="checkbox" id="rWA"/> 💬 WhatsApp reminder</label>
+        </div>
+        <button class="cb-btn" onclick="confirmRem()">✅ Set My Reminders</button>
+      </div>
+    </div><div class="mt">${gt()}</div></div>`;
+  novaBox.appendChild(w);sc();
+}
+function confirmRem(){
+  bk.rem={sms:document.getElementById('rSMS').checked,email:document.getElementById('rEML').checked,wa:document.getElementById('rWA').checked};
+  const chosen=[bk.rem.sms?'SMS':'',bk.rem.email?'Email':'',bk.rem.wa?'WhatsApp':''].filter(Boolean);
+  document.getElementById('rSMS').closest('.msg').remove();
+  uBub('Reminders: '+(chosen.length?chosen.join(', '):'None'));
+  showSummary();
+}
+
+function showSummary(){
+  st=S.BOOK_CONFIRM;
+  const remStr=[bk.rem.sms?'📱 SMS':'',bk.rem.email?'📧 Email':'',bk.rem.wa?'💬 WhatsApp':''].filter(Boolean).join(', ')||'None';
+  const w=mkBotEl();
+  w.innerHTML=`<div class="msg-av">🦷</div><div>
+    <div class="mb">Here's your booking summary — everything look good?
+      <div class="cc" style="margin-top:9px">
+        <div class="cc-row"><span>Name</span><strong>${bk.name}</strong></div>
+        <div class="cc-row"><span>Phone</span><strong>${bk.phone}</strong></div>
+        <div class="cc-row"><span>Email</span><strong>${bk.email}</strong></div>
+        <div class="cc-row"><span>Treatment</span><strong>${bk.svc}</strong></div>
+        <div class="cc-row"><span>Date</span><strong>${fmtDate(bk.date)}</strong></div>
+        <div class="cc-row"><span>Time</span><strong>${bk.time}</strong></div>
+        <div class="cc-row"><span>Reminders</span><strong>${remStr}</strong></div>
+      </div>
+      <button class="cb-btn" onclick="finalise()" style="margin-top:9px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Confirm Booking
+      </button>
+      <button class="cb-btn sec" onclick="restartBk()">✏️ Start over</button>
+    </div><div class="mt">${gt()}</div></div>`;
+  novaBox.appendChild(w);sc();
+}
+function finalise(){
+  document.querySelector('.cc')?.closest('.msg')?.remove();
+  st=S.DONE;
+  const fn=bk.name.split(' ')[0];
+  const remStr=[bk.rem.sms?'SMS':'',bk.rem.email?'email':'',bk.rem.wa?'WhatsApp':''].filter(Boolean).join(' & ')||'no reminders';
+  novaBot(`🎉 You're all booked in, ${fn}!\n\n📅 ${fmtDate(bk.date)} at ${bk.time}\n🦷 ${bk.svc}\n🔔 Reminders via ${remStr}\n\nWe look forward to seeing you! If anything changes, just call us on 01608 123 456 or chat with me here.`,[
+    {l:'📅 Book another appointment',f:()=>startBook()},
+    {l:'🔙 Main menu',f:menu},
+  ]);
+}
+function restartBk(){document.querySelector('.cc')?.closest('.msg')?.remove();startBook();}
+
+/* ── NOVA UI HELPERS ── */
+function novaBot(text,qrs=[]){
+  const typing=mkBotEl();typing.id='nova-typing';
+  typing.innerHTML=`<div class="msg-av">🦷</div><div class="typing-wrap"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  novaBox.appendChild(typing);sc();
+  setTimeout(()=>{
+    typing.remove();
+    const w=mkBotEl();
+    let qrHtml='';
+    if(qrs.length){
+      qrHtml=`<div class="qr-wrap">${qrs.map((q,i)=>`<button class="qr" onclick="qrTap(this,${i})">${q.l}</button>`).join('')}</div>`;
+      qrs.forEach((q,i)=>window[`__nq${i}`]=q.f);
+    }
+    w.innerHTML=`<div class="msg-av">🦷</div><div>
+      <div class="mb">${text.replace(/\n/g,'<br/>')}</div>
+      ${qrHtml}
+      <div class="mt">${gt()}</div></div>`;
+    novaBox.appendChild(w);sc();
+  },600+Math.random()*500);
+}
+function uBub(txt){
+  const w=document.createElement('div');w.className='msg user';
+  w.innerHTML=`<div><div class="mb">${txt}</div><div class="mt">${gt()}</div></div>`;
+  novaBox.appendChild(w);sc();
+}
+function mkBotEl(){const w=document.createElement('div');w.className='msg bot';return w;}
+function qrTap(btn,i){btn.closest('.qr-wrap').querySelectorAll('.qr').forEach(b=>b.disabled=true);if(window[`__nq${i}`])window[`__nq${i}`]();}
+function novaSend(){const inp=document.getElementById('novaInput');const t=inp.value.trim();if(!t)return;inp.value='';inp.style.height='auto';handleInput(t);}
+function novaKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();novaSend();}}
+function novaResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+function sc(){setTimeout(()=>novaBox.scrollTop=novaBox.scrollHeight,60);}
+function gt(){return new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
+function fmtDate(d){if(!d)return '';return new Date(d+'T12:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+
+// Scroll-triggered greeting — fires once after user scrolls 30% of the page
+let greetingShown=false;
+window.addEventListener('scroll',()=>{
+  if(greetingShown||novaOpen)return;
+  const pct=document.documentElement.scrollTop/(document.documentElement.scrollHeight-window.innerHeight);
+  if(pct>.3){
+    greetingShown=true;
+    document.getElementById('nova-notif').classList.add('show');
+    const g=document.getElementById('nova-greeting');
+    g.classList.add('show');
+    setTimeout(()=>g.classList.remove('show'),5000);
+  }
+},{passive:true});
+
+/* ── MOBILE WIZARD: show/hide based on screen width ── */
+function checkWizard(){
+  const isMob=window.innerWidth<=900;
+  const wiz=document.querySelector('.wizard-steps');
+  const desk=document.querySelector('.desk-form');
+  if(wiz)wiz.style.display=isMob?'block':'none';
+  if(desk)desk.style.display=isMob?'none':'block';
+}
+window.addEventListener('resize',checkWizard);
+checkWizard();
+</script>
+</body>
+</html>
